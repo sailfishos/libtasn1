@@ -1,0 +1,24 @@
+* Fri Jul  9 2010 Yan Li <yan.i.li@intel.com> - 2.7
+- Updated to latest upstream release
+- Corrected license tags: the core library is LGPLv2.1+, only tools
+  sub-package is GPLv3+ (BMC#11589)
+
+* Sat Mar 06 2010 Anas Nashif <anas.nashif@intel.com> - 2.3
+- Fixed file list for info file
+
+* Sat Feb 27 2010 Anas Nashif <anas.nashif@intel.com> - 2.3
+- Updated with latest spectacle
+- Include YAML file in source rpm
+
+* Thu Nov 05 2009 PeterZhu <peter.j.zhu@intel.com> - 2.3
+- Remove /usr/share/info/dir in %install
+
+* Mon Sep 07 2009 Passion Zhao <passion.zhao@intel.com> - 2.3
+- Update to 2.3
+
+* Wed May 06 2009 Passion Zhao <passion.zhao@intel.com> 2.1
+- Update to 2.1
+
+* Wed Dec 17 2008 Arjan van de Ven <arjan@linux.intel.com> 1.4
+- Create standardized spec file
+

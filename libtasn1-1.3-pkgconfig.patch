@@ -1,0 +1,105 @@
+diff -up libtasn1-1.3/lib/libtasn1-config.in.~1~ libtasn1-1.3/lib/libtasn1-config.in
+--- libtasn1-1.3/lib/libtasn1-config.in.~1~	2008-02-01 17:14:52.000000000 +0100
++++ libtasn1-1.3/lib/libtasn1-config.in	2008-02-13 13:38:29.000000000 +0100
+@@ -1,12 +1,8 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+ exec_prefix_set=no
+ 
+-tasn1_libs="@LIBTASN1_LIBS@"
+-tasn1_cflags="@LIBTASN1_CFLAGS@"
+-tasn1_la_file="@libdir@/libtasn1.la"
++pkgopts=()
+ 
+ usage()
+ {
+@@ -22,6 +19,11 @@ EOF
+ 	exit $1
+ }
+ 
++pkgcfg()
++{
++    ${PKG_CONFIG:-pkg-config} "${pkgopts[@]}" "$@" libtasn1
++}
++
+ if test $# -eq 0; then
+ 	usage 1 1>&2
+ fi
+@@ -34,23 +36,23 @@ while test $# -gt 0; do
+ 
+   case $1 in
+     --prefix=*)
+-      prefix=$optarg
++      pkgopts=( "${pkgopts[@]}" "--define-variable=prefix=$optarg" )
+       if test $exec_prefix_set = no ; then
+-	exec_prefix=$optarg
++	  pkgopts=( "${pkgopts[@]}" "--define-variable=exec_prefix=$optarg" )
+       fi
+       ;;
+     --prefix)
+       echo_prefix=yes
+       ;;
+     --exec-prefix=*)
+-      exec_prefix=$optarg
++      pkgopts=( "${pkgopts[@]}" "--define-variable=exec_prefix=$optarg" )
+       exec_prefix_set=yes
+       ;;
+     --exec-prefix)
+       echo_exec_prefix=yes
+       ;;
+     --version)
+-      echo "@VERSION@"
++      pkgcfg --modversion
+       exit 0
+       ;;
+     --cflags)
+@@ -60,7 +62,8 @@ while test $# -gt 0; do
+       echo_libs=yes
+       ;;
+     --la-file)
+-      echo_la_file=yes
++      echo ".la file not shipped" >&2
++      exit 1
+       ;;
+     --help)
+       usage 0
+@@ -73,32 +76,17 @@ while test $# -gt 0; do
+ done
+ 
+ if test "$echo_prefix" = "yes"; then
+-    echo $prefix
++    pkgcfg --variable=prefix
+ fi
+ 
+ if test "$echo_exec_prefix" = "yes"; then
+-    echo $exec_prefix
++    pkgcfg --variable=exec_prefix
+ fi
+ 
+ if test "$echo_cflags" = "yes"; then
+-    if test "@includedir@" != "/usr/include" ; then
+-      includes="-I@includedir@"
+-      for i in $tasn1_cflags ; do
+-	if test "$i" = "-I@includedir@" ; then
+-	  includes=""
+-	fi
+-      done
+-    fi
+-    echo $includes $tasn1_cflags
+-fi
+-
+-if test "$echo_la_file" = "yes"; then
+-    echo ${tasn1_la_file}
++    pkgcfg --cflags
+ fi
+ 
+ if test "$echo_libs" = "yes"; then
+-    echo ${tasn1_libs}
++    pkgcfg --libs
+ fi
+-
+-
+-
