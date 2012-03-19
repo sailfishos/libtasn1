@@ -1,3 +1,6 @@
+* Sat Mar 17 2012 Marko Saukko <marko.saukko@gmail.com> - 2.11
+- Update to version 2.11
+
 * Fri Jul  9 2010 Yan Li <yan.i.li@intel.com> - 2.7
 - Updated to latest upstream release
 - Corrected license tags: the core library is LGPLv2.1+, only tools
