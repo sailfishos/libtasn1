@@ -1,3 +1,6 @@
+* Tue Jan 07 2014 Davide Bettio <davide.bettio@ispirata.com> 2.14
+- Upgrade to libtasn1 2.14
+
 * Thu Apr 05 2012 Marko Saukko <sage@merproject.org> 2.12
 - Fixes MER#241: CVE-2012-1569 Recommendation: Upgrade to libtasn1 2.12
 
