@@ -1,3 +1,6 @@
+* Sun Jun 08 2014 Pasi Sjöholm <pasi.sjoholm@siirappi.com> - 3.6
+- Upgrade to libtasn1 3.6
+
 * Tue Jan 07 2014 Davide Bettio <davide.bettio@ispirata.com> 2.14
 - Upgrade to libtasn1 2.14
 
