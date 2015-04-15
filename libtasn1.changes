@@ -1,3 +1,6 @@
+* Wed Apr 15 2015 Pasi Sjöholm <pasi.sjoholm@siirappi.com> - 3.6
+- Fix CVE-2015-2806. MER#897
+
 * Sun Jun 08 2014 Pasi Sjöholm <pasi.sjoholm@siirappi.com> - 3.6
 - Upgrade to libtasn1 3.6
 
