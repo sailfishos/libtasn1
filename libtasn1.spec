@@ -7,7 +7,7 @@
 
 Name:       libtasn1
 Summary:    This is the ASN.1 library used in GNUTLS
-Version:    3.6
+Version:    4.5
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2.1+
@@ -15,7 +15,6 @@ URL:        http://www.gnu.org/software/libtasn1/
 Source0:    http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
 Source1:    http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz.sig
 Source100:  libtasn1.yaml
-Patch1:     CVE-2015-2806.patch
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  bison
@@ -59,7 +58,6 @@ use libtasn1.
 %prep
 %setup -q -n %{name}-%{version}
 
-%patch1 -p1 -b .CVE-2015-2806
 # >> setup
 # << setup
 
