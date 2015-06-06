@@ -1,3 +1,6 @@
+* Wed Jun 03 2015 Pasi Sjöholm <pasi.sjoholm@jollamobile.com> - 4.5-1
+- Upgrade to 4.5. Contributes to MER#1060
+
 * Wed Apr 15 2015 Pasi Sjöholm <pasi.sjoholm@siirappi.com> - 3.6
 - Fix CVE-2015-2806. MER#897
 
