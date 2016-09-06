@@ -29,7 +29,7 @@
 - Include YAML file in source rpm
 
 * Thu Nov 05 2009 PeterZhu <peter.j.zhu@intel.com> - 2.3
-- Remove /usr/share/info/dir in %install
+- Remove /usr/share/info/dir in install
 
 * Mon Sep 07 2009 Passion Zhao <passion.zhao@intel.com> - 2.3
 - Update to 2.3
