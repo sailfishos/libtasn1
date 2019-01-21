@@ -42,6 +42,16 @@ be found at http://www.gnu.org/software/gnutls and http://www.gnutls.org
 This package contains files for development of applications which will
 use libtasn1.
 
+%package doc
+Summary:   Documentation for %{name}
+Group:     Documentation
+Requires:  %{name} = %{version}-%{release}
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+
+%description doc
+Man and info pages for %{name}.
+
 %prep
 %setup -q -n %{name}-%{version}/%{name}
 
@@ -49,41 +59,46 @@ use libtasn1.
 touch ChangeLog
 autoreconf -v -f -i
 %configure --disable-static
-make %{?jobs:-j%jobs}
+make %{?_smp_mflags}
 
 %install
 rm -rf %{buildroot}
 %make_install
 
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
+install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
+	AUTHORS ChangeLog NEWS README THANKS doc/TODO
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%post devel
-%install_info --info-dir=%_infodir %{_infodir}/libtasn1.info.gz
+%post doc
+%install_info --info-dir=%_infodir %{_infodir}/%{name}.info.gz
 
-%postun devel
+%postun doc
 if [ $1 = 0 ] ;then
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libtasn1.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 fi
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING.LIB
+%license COPYING.LIB
 %{_libdir}/*.so.*
 
 %files tools
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_bindir}/asn1*
-%doc %{_mandir}/man1/asn1*
 
 %files devel
 %defattr(-,root,root,-)
-%doc README THANKS AUTHORS
-%doc doc/TODO ChangeLog NEWS
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-%doc %{_infodir}/libtasn1.info.gz
-%doc %{_mandir}/man3/*asn1*
+
+%files doc
+%defattr(-,root,root,-)
+%{_infodir}/%{name}.*
+%{_mandir}/man*/*asn1*
+%{_docdir}/%{name}-%{version}
