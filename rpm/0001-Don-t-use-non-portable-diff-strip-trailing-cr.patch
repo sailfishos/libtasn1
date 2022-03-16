@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Josefsson <simon@josefsson.org>
+Date: Wed, 10 Nov 2021 15:59:05 +0100
+Subject: [PATCH] Don't use non-portable diff --strip-trailing-cr.
+
+Signed-off-by: Simon Josefsson <simon@josefsson.org>
+---
+ tests/parser.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/parser.sh b/tests/parser.sh
+index 07448b6..eb885e5 100755
+--- a/tests/parser.sh
++++ b/tests/parser.sh
+@@ -32,7 +32,7 @@ if test $? != 0;then
+ 	exit 1
+ fi
+ 
+-diff --strip-trailing-cr ${TMPFILE} ${srcdir}/pkix.asn.out
++diff ${TMPFILE} ${srcdir}/pkix.asn.out
+ 
+ if test $? != 0;then
+ 	echo "Generated C file differs!"
+-- 
+2.35.1
+
