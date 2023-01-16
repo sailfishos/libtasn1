@@ -1,6 +1,6 @@
 Name:       libtasn1
 Summary:    This is the ASN.1 library used in GNUTLS
-Version:    4.18.0
+Version:    4.19.0
 Release:    1
 License:    LGPLv2+
 URL:        http://www.gnu.org/software/libtasn1/
@@ -11,14 +11,6 @@ BuildRequires:  bison
 BuildRequires:  help2man
 BuildRequires:  texinfo
 BuildRequires:  libtool
-
-# Commands to generate patch files
-# git format-patch -N --zero-commit v%%{version}..sailfishos/v%%{version} \
-#        --output-directory=../rpm
-# cd ../rpm
-# i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
-Patch0001: 0001-Don-t-use-non-portable-diff-strip-trailing-cr.patch
-Patch0002: 0002-Use-portable-way-to-remove-carriage-returns.patch
 
 %description
 This is the ASN.1 library used in GNUTLS.  More up to date information can
