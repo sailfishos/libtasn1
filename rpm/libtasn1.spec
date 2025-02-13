@@ -1,9 +1,9 @@
 Name:       libtasn1
 Summary:    This is the ASN.1 library used in GNUTLS
-Version:    4.19.0
+Version:    4.20.0
 Release:    1
 License:    LGPLv2+
-URL:        http://www.gnu.org/software/libtasn1/
+URL:        https://github.com/sailfishos/libtasn1
 Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -58,7 +58,7 @@ echo %{version} | sed -e 's|\+.*||' > .tarball-version
 
 ./bootstrap \
     --no-git  \
-    --gnulib-srcdir=$PWD/gnulib
+    --gnulib-srcdir=$PWD/../gnulib
 
 %configure \
     --disable-static \
@@ -92,23 +92,19 @@ if [ $1 = 0 ] ;then
 fi
 
 %files
-%defattr(-,root,root,-)
-%license COPYING
+%license COPYING.LESSERv2
 %{_libdir}/*.so.*
 
 %files tools
-%defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/asn1*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 
 %files doc
-%defattr(-,root,root,-)
 %{_infodir}/%{name}.*
 %{_mandir}/man*/*asn1*
 %{_docdir}/%{name}-%{version}

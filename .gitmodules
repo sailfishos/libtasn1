@@ -1,3 +1,6 @@
 [submodule "libtasn1"]
 	path = libtasn1
 	url = https://github.com/sailfishos-mirror/libtasn1.git
+[submodule "gnulib"]
+	path = gnulib
+	url = https://github.com/sailfishos-mirror/gnulib.git
